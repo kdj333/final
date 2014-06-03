@@ -1,0 +1,34 @@
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-10">
+    <%= link_to "Add a New Video", "/videos/new", "class" => 'btn btn-lg btn-primary' %>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-8">
+
+    <% Video.read.order("title desc").each do |video| %>
+
+      <div class="row video">
+
+        <div class="col-md-4">
+          <%= link_to image_tag(video["video_url"]), "/videos/#{video["id"]}" %>
+        </div>
+
+        <div class="col-md-8">
+          <h2>
+            <%= link_to video["title"], "/videos/#{video["id"]}" %>
+          </h2>
+
+          <% end %>
+        </div>
+
+      </div>
+
+  </div>
+
+

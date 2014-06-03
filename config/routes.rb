@@ -1,4 +1,32 @@
 Final::Application.routes.draw do
+
+  # Specify a custom home page
+  get "/" => "videos#index"
+
+  # Sign-In and Sign-Out
+
+  get "/logout" => 'sessions#logout'
+  get "/login" => 'sessions#login'
+  post "/authenticate" => 'sessions#authenticate'
+
+  # Resource: Reviews
+
+  # --- Create
+  get "/videos/new" => 'videos#new'
+  post "/videos" => 'videos#create'
+
+  # --- Read
+  get "/videos" => 'videos#index'
+  get "/videos/:id" => 'videos#show'
+
+  # -- Update
+  get "/videos/:id/edit" => 'videos#edit'
+  patch "/videos/:id" => 'videos#update'
+
+  # --- Delete
+  delete "/videos/:id" => 'videos#destroy'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
