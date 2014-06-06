@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603023306) do
+ActiveRecord::Schema.define(version: 20140604202430) do
 
   create_table "ratings", force: true do |t|
     t.integer "tip_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140603023306) do
     t.string   "video_url"
     t.integer  "user_id"
     t.text     "swing_issues"
+    t.string   "image_url"
   end
 
 end

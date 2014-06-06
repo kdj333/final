@@ -26,6 +26,45 @@ Final::Application.routes.draw do
   # --- Delete
   delete "/videos/:id" => 'videos#destroy'
 
+  # Resource: Users
+
+  # --- Create
+  get "/users/new" => 'users#new'
+  post "/users" => 'users#create'
+
+  # --- Read
+  get "/users" => 'users#index'
+  get "/users/:id" => 'users#show'
+
+  # -- Update
+  get "/users/:id/edit" => 'users#edit'
+  patch "/users/:id" => 'users#update'
+
+  # --- Delete
+  delete "/users/:id" => 'users#destroy'
+
+  # Resource: Tips
+
+  # --- Create
+  get "/tips/new" => 'tips#new'
+  post "/tips" => 'tipss#create'
+
+  # --- Read
+  get "/tips" => 'tips#index'
+  get "/tips/:id" => 'tips#show'
+
+  # -- Update
+  get "/tips/:id/edit" => 'tips#edit'
+  patch "/tips/:id" => 'tips#update'
+
+  # --- Delete
+  delete "/tips/:id" => 'tips#destroy'
+
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

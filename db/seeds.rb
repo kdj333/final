@@ -8,8 +8,8 @@ greg = User.create(:username => "greg", :password => "shark", :name => "Greg Nor
 
 
 Video.delete_all
-mk = Video.create(:title => "Kuchar Swing", :video_url => "http://youtu.be/qozX7GdWQTA", :user_id => matt["id"], :swing_issues => "Help me with my hooks, blocks, and thin shots!")
-bw = Video.create(:title => "Bubba Swing", :video_url => "http://youtu.be/kxzKwHBpMjY", :user_id => matt["id"], :swing_issues => "I like to play a fade, but it sometimes turns into a big slice.  What can I do to fix this?")
+mk = Video.create(:title => "Kuchar Swing", :image_url => "https://i1.ytimg.com/vi/qozX7GdWQTA/mqdefault.jpg", :video_url => "//www.youtube.com/embed/qozX7GdWQTA?rel=0", :user_id => matt["id"], :swing_issues => "Help me with my hooks, blocks, and thin shots!")
+bw = Video.create(:title => "Bubba Swing", :image_url => "https://i1.ytimg.com/vi/kxzKwHBpMjY/mqdefault.jpg", :video_url => "//www.youtube.com/embed/kxzKwHBpMjY?rel=0", :user_id => bubba["id"], :swing_issues => "I like to play a fade, but it sometimes turns into a big slice.  What can I do to fix this?")
 
 Tip.delete_all
 jh = Tip.create(:user_id => jack.id, :video_id => mk.id, :content => "Matt, nice swing overall, but it looksl like your swing plane may be a little flat.  This can cause the club to get trapped behind you, leading to big hooks or blocks.  It also creates a sweeping motion that can lead to thin shots.  Work on getting your hands above your right shoulder at the top of your swing.  From there, just drop the club into the slot and rotate your body through impact.")

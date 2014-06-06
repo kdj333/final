@@ -1,18 +1,43 @@
 <% video_id = params["id"] %>
 <% video = Video.read(video_id) %>
 
-
 <div class="row">
-
-  <div class="col-md-4">
-    <%= image_tag(video["video_url"]) %>
-  </div>
 
   <div class="col-md-8">
     <h1><%= video["title"] %>
 
     </h1>
 
+<iframe width="640" height="360" src= <%= video["video_url"] %> frameborder="0" allowfullscreen></iframe>
 
+<h2>Swing Tips</h2>
 
+    <% if Tip.where("video_id" => video["id"]).count == 0 %>
+      <p>Be the first to add a swing tip!</p>
+    <% end %>
 
+    <%= form_tag "/tips" do %>
+
+      <%= hidden_field_tag "video_id", video["id"] %>
+
+      <div class="form-group">
+        <%= text_area_tag :content, "", "class" => "form-control", "placeholder" => "Provide a swing tip for this golfer!", "rows" => 4 %>
+      </div>
+
+      <%= submit_tag "Add Swing Tip", "class" => "btn btn-md btn-primary" %>
+    <% end %>
+
+    <% Tip.where("video_id" => video["id"]).each do |tip| %>
+      <% the_user = User.find_by("id" => tip["user_id"]) %>
+      <div class="tip row">
+        <div class="col-md-3">
+
+          <% if the_user.present? %>
+            <p>-by <%= the_user["name"] %></p>
+          <% end %>
+        </div>
+        <div class="col-md-9">
+          <p class="lead"><%= tip.content %></p>
+        </div>
+      </div>
+    <% end %>

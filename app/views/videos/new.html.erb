@@ -13,11 +13,21 @@
       </div>
 
       <div class="form-group">
-        <%= label_tag "Link to a poster image" %>
+        <%= label_tag "Link to swing image:" %>
+        <%= text_field_tag "picture", "", "class" => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "Link to swing video:" %>
         <%= text_field_tag "url", "", "class" => "form-control" %>
       </div>
 
-      <%= submit_tag "Add This Swing Video", "class" => "btn btn-lg btn-success" %> or <%= link_to "Cancel", "/movies" %>
+      <div class="form-group">
+        <%= label_tag "What issues are you having with your golf shots?" %>
+        <%= text_field_tag "issues", "", "class" => "form-control" %>
+      </div>
+
+      <%= submit_tag "Add This Swing Video", "class" => "btn btn-lg btn-success" %> or <%= link_to "Cancel", "/videos" %>
 
     </form>
 </div>

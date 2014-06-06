@@ -1,34 +1,47 @@
-</div>
+<div class"row">
+  <div class="col-md-12">
+    <h3>Most Recent Golf Swings</h3>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col-md-2 col-md-offset-10">
+  <div class="col-md-2">
     <%= link_to "Add a New Video", "/videos/new", "class" => 'btn btn-lg btn-primary' %>
+  <ul>
+
   </div>
 </div>
 
 <div class="row">
 
-  <div class="col-md-8">
+  <div class="col-md-4">
 
     <% Video.read.order("title desc").each do |video| %>
 
       <div class="row video">
 
-        <div class="col-md-4">
-          <%= link_to image_tag(video["video_url"]), "/videos/#{video["id"]}" %>
-        </div>
-
         <div class="col-md-8">
           <h2>
             <%= link_to video["title"], "/videos/#{video["id"]}" %>
           </h2>
+          <p><b>Submitted on:</b> <%= video["created_at"] %></p>
+
+          <% user = User.find_by("id" => video["user_id"]) %>
+          <% if user.present? %>
+            <p><b>Submitted by:</b> <%= user["name"] %></p>
+            <p><b>Swing Issues:</b> <%= video["swing_issues"] %></p>
 
           <% end %>
+
+        <div class="col-md-8">
+          <%= link_to image_tag(video["image_url"]), "/videos/#{video["id"]}" %>
+        </div>
+
         </div>
 
       </div>
-
+    <% end %>
   </div>
+  <ul>
 
 
