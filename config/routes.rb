@@ -47,7 +47,7 @@ Final::Application.routes.draw do
 
   # --- Create
   get "/tips/new" => 'tips#new'
-  post "/tips" => 'tipss#create'
+  post "/tips" => 'tips#create'
 
   # --- Read
   get "/tips" => 'tips#index'

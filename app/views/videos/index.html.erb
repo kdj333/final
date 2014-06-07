@@ -24,7 +24,7 @@
           <h2>
             <%= link_to video["title"], "/videos/#{video["id"]}" %>
           </h2>
-          <p><b>Submitted on:</b> <%= video["created_at"] %></p>
+          <p><b>Submitted on:</b> <%= video["created_at"].strftime("%m/%d/%Y") %></p>
 
           <% user = User.find_by("id" => video["user_id"]) %>
           <% if user.present? %>

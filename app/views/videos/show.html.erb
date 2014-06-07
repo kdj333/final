@@ -1,6 +1,14 @@
 <% video_id = params["id"] %>
 <% video = Video.read(video_id) %>
 
+ <p><b>Submitted on:</b> <%= video["created_at"].strftime("%m/%d/%Y") %></p>
+
+  <% user = User.find_by("id" => video["user_id"]) %>
+  <% if user.present? %>
+  <p><b>Submitted by:</b> <%= user["name"] %></p>
+  <p><b>Swing Issues:</b> <%= video["swing_issues"] %></p>
+ <% end %>
+
 <div class="row">
 
   <div class="col-md-8">
@@ -24,20 +32,24 @@
         <%= text_area_tag :content, "", "class" => "form-control", "placeholder" => "Provide a swing tip for this golfer!", "rows" => 4 %>
       </div>
 
-      <%= submit_tag "Add Swing Tip", "class" => "btn btn-md btn-primary" %>
+      <%= submit_tag "Add Swing Tip!", "class" => "btn btn-md btn-primary" %>
     <% end %>
 
-    <% Tip.where("video_id" => video["id"]).each do |tip| %>
+    <p><% Tip.where("video_id" => video["id"]).each do |tip| %>
       <% the_user = User.find_by("id" => tip["user_id"]) %>
       <div class="tip row">
         <div class="col-md-3">
-
+        <hr>
           <% if the_user.present? %>
-            <p>-by <%= the_user["name"] %></p>
+            <p><b>Tip from: </b><%= the_user["name"] %></p>
+              <p><b>Date: </b><%= tip["created_at"].strftime("%m/%d/%Y") %></p>
+              <p><b>Tip Rating: </b></p>
+              <p><b>Avg. Rating for tips provided by <%= the_user["name"] %>: </b></p>
           <% end %>
         </div>
         <div class="col-md-9">
-          <p class="lead"><%= tip.content %></p>
+          <p class="lead"><i>"<%= tip.content %>"</i></p>
         </div>
       </div>
+
     <% end %>

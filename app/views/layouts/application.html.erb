@@ -27,7 +27,7 @@
           <div class="pull-right">
             <% user = User.find_by("id" => cookies["user_id"]) %>
             <% if user.present? %>
-              <%= user["name"] %>
+              <b><%= user["name"] %>:</b>
               <%= link_to "My Profile", "/users/#{user["id"]}" %> |
               <%= link_to "Sign Out", '/logout' %>
             <% else %>
@@ -39,7 +39,6 @@
         <hr>
         <h4 class="text-warning"><%= notice %></h4>
       </div>
-
 
       <%= yield %>
 
