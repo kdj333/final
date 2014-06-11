@@ -32,7 +32,7 @@
         <%= text_area_tag :content, "", "class" => "form-control", "placeholder" => "Provide a swing tip for this golfer!", "rows" => 4 %>
       </div>
 
-      <%= submit_tag "Add Swing Tip!", "class" => "btn btn-md btn-primary" %>
+      <%= submit_tag "Add Swing Tip!!!", "class" => "btn btn-md btn-primary" %>
     <% end %>
 
     <p><% Tip.where("video_id" => video["id"]).each do |tip| %>
