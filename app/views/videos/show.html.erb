@@ -43,13 +43,28 @@
           <% if the_user.present? %>
             <p><b>Tip from: </b><%= the_user["name"] %></p>
               <p><b>Date: </b><%= tip["created_at"].strftime("%m/%d/%Y") %></p>
-              <p><b>Tip Rating: </b></p>
-              <p><b>Avg. Rating for tips provided by <%= the_user["name"] %>: </b></p>
-          <% end %>
-        </div>
+              <p><b>Avg. tip rating:
+
+              <% tipavg = Rating.where("tip_id" => tip["id"]).average(:rating).to_i %>
+                <% tipavg.times do %>
+                  &star;
+                <% end %></b></p>
+      <% end %>
+      </div>
+
         <div class="col-md-9">
           <p class="lead"><i>"<%= tip.content %>"</i></p>
         </div>
       </div>
+
+      <%= form_tag "/ratings" do %>
+
+        <%= hidden_field_tag "tip_id", tip["id"] %>
+
+        <div class="form-group">
+          <%= label_tag :rating %>
+          <%= select_tag :rating, options_for_select(['5 stars','4 stars','3 stars','2 stars','1 star']) %>
+          <%= submit_tag "Rate this tip!", "class" => "btn btn-md btn-primary" %>
+      <% end %>
 
     <% end %>
